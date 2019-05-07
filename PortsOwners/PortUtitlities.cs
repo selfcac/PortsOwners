@@ -10,13 +10,18 @@ namespace PortsOwners
 {
     public class PortUtitlities
     {
-        public class Tcp6ConnectionInfo
+        public class TcpConnectionInfo
         {
             public ushort LocalPort, RemotePort;
             public IPAddress LocalAddress, RemoteAddress;
             public Iphlpapi.MibTcpState State;
             public Iphlpapi.TcpConnectionOffloadState OffloadState;
-            public uint LocalScopeId, OwnerPid;
+            public uint OwnerPid;
+        }
+
+        public class Tcp6ConnectionInfo : TcpConnectionInfo
+        {
+            public uint LocalScopeId;
 
             public Tcp6ConnectionInfo(Iphlpapi.MIB_TCP6ROW2 tcpRow)
             {
@@ -34,14 +39,8 @@ namespace PortsOwners
             }
         }
 
-        public class Tcp4ConnectionInfo
+        public class Tcp4ConnectionInfo : TcpConnectionInfo
         {
-            public ushort LocalPort, RemotePort;
-            public IPAddress LocalAddress, RemoteAddress;
-            public Iphlpapi.MibTcpState State;
-            public Iphlpapi.TcpConnectionOffloadState OffloadState;
-            public uint OwnerPid;
-
             public Tcp4ConnectionInfo(Iphlpapi.MIB_TCPROW2 tcpRow)
             {
                 // We mask the ports in this struct because according to the documentation, the upper
@@ -105,8 +104,11 @@ namespace PortsOwners
                 catch (Exception exReadData)
                 {
                     log("Error occured while getting data, error:\n" + exReadData);
-                    if (memoryPointer != IntPtr.Zero)
-                        Marshal.FreeHGlobal(memoryPointer);
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(memoryPointer);
+                    memoryPointer = IntPtr.Zero;
                 }
             }
             catch (Exception exMain)
@@ -116,7 +118,6 @@ namespace PortsOwners
 
             return resultTable;
         }
-
 
         public static List<Tcp4ConnectionInfo> GetIP4(Action<string> log)
         {
@@ -168,6 +169,11 @@ namespace PortsOwners
                     log("Error occured while getting data, error:\n" + exReadData);
                     if (memoryPointer != IntPtr.Zero)
                         Marshal.FreeHGlobal(memoryPointer);
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(memoryPointer);
+                    memoryPointer = IntPtr.Zero;
                 }
             }
             catch (Exception exMain)

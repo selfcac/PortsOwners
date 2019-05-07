@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,9 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PortUtitlities.cs" />
+    <Compile Include="PrincipalUtils.cs" />
+    <Compile Include="ProcessUtilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Win32\advapi32.cs" />
     <Compile Include="Win32\Iphlpapi.cs" />
+    <Compile Include="Win32\kernel32.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
