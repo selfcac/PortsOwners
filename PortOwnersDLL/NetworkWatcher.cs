@@ -38,6 +38,7 @@ namespace PortsOwners
                     UserName = name,
                     SID = sid
                 });
+                //Console.WriteLine("Name: {0}, SID: {1}", name, sid);
             });
 
             UpdateTables(null);
@@ -71,9 +72,10 @@ namespace PortsOwners
                     if (addr.LocalAddress.IndexOf(":") > -1)
                         addr.LocalAddress = string.Format("[{0}]:{1}", addr.LocalAddress, conn.LocalPort);
                     else
-                        addr.LocalAddress += conn.LocalPort;
+                        addr.LocalAddress += ":" + conn.LocalPort;
 
                     // Finally add to array:
+                    //Console.WriteLine("{0}, SID: {1}", addr.LocalAddress, addr.OwnerSID);
                     addrToSid.Add(addr.LocalAddress, addr);
                 }
             }
