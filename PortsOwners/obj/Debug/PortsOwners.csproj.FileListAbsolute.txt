@@ -1,6 +1,0 @@
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\bin\Debug\PortsOwners.exe
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\bin\Debug\PortsOwners.pdb
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\obj\Debug\PortsOwners.csprojAssemblyReference.cache
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\obj\Debug\PortsOwners.csproj.CoreCompileInputs.cache
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\obj\Debug\PortsOwners.exe
-C:\Users\Yoni\Desktop\selfcac\PortsOwners\PortsOwners\obj\Debug\PortsOwners.pdb
