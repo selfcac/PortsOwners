@@ -68,7 +68,7 @@ namespace PortsOwners
             }
         }
 
-        public static string ExGetProcessInfoByPID(IntPtr processHandle)
+        public static string sidFromProcess(IntPtr processHandle)
         {
             string resultSID = "";
 
@@ -80,21 +80,18 @@ namespace PortsOwners
                     advapi32.ConvertSidToStringSid(_SID, ref resultSID);
                 }
             }
-            catch
-            {
-                resultSID = "<Error_Process_Info>";
-            }
+            catch (Exception){}
 
             return resultSID;
         }
 
-        public static string ExGetProcessInfoByPID(uint PID)
+        public static string sidFromProcess(uint PID)
         {
-            string result = "<Error_Process_Info>";
+            string result = "";
             Process process = Process.GetProcessById((int)PID);
             try
             {
-                ExGetProcessInfoByPID(process.Handle);
+                sidFromProcess(process.Handle);
             }
             catch (Exception) {}
             return result;
@@ -114,10 +111,9 @@ namespace PortsOwners
                     }
                 }
             }
-            catch (Exception)
-            {
-            }
-            return "<Process_Name_Error>";
+            catch (Exception){}
+
+            return "";
         }
 
         public static string GetProcessPath(uint processId)
@@ -133,8 +129,23 @@ namespace PortsOwners
                 kernel32.CloseHandle(hprocess);
             }
 
-            return "<Process_Name_Error>";
+            return "";
         }
 
+        public static bool usingHandle(uint targetProcess, Action<IntPtr> handleAction)
+        {
+            bool result = false;
+            IntPtr hprocess = kernel32.OpenProcess(kernel32.ProcessAccessFlags.QueryLimitedInformation, false, targetProcess);
+            try
+            {
+                handleAction(hprocess);
+                result = true;
+            }
+            finally
+            {
+                kernel32.CloseHandle(hprocess);
+            }
+            return result;
+        }
     }
 }
