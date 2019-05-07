@@ -7,7 +7,7 @@ using System.DirectoryServices.AccountManagement;
 
 namespace PortsOwners
 {
-    class PrincipalUtils
+    public class PrincipalUtils
     {
         public static string BuiltinAdminGroup = 
             new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null).ToString(); // "S-1-5-32-544";
