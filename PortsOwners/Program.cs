@@ -28,7 +28,19 @@ namespace PortsOwnersExample
                     row.LocalAddress, row.LocalPort, row.RemoteAddress, row.RemotePort, UserName, row.State);
             }
 
-            Console.ReadKey();
+            Console.WriteLine("==========================================");
+
+            NetworkWatcher nw = new NetworkWatcher();
+            nw.Start(5);
+
+            string input = "";
+            do
+            {
+                input = Console.ReadLine();
+                Console.WriteLine("Is Admin? " + nw.isLocalAddressAdmin(input, true /* Assume Access denied */));
+            } while (input != "q");
+
+            nw.Stop();
         }
 
         

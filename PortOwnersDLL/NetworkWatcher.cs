@@ -27,7 +27,7 @@ namespace PortsOwners
 
 
         Timer timerThread = null;
-        public void Start(uint updateMinuteInterval)
+        public void Start(uint updateSecondsInterval)
         {
 
 
@@ -42,7 +42,7 @@ namespace PortsOwners
 
             UpdateTables(null);
 
-            timerThread = new Timer(UpdateTables, null, 0, (int)TimeSpan.FromMinutes(updateMinuteInterval).TotalMilliseconds);
+            timerThread = new Timer(UpdateTables, null, 0, (int)TimeSpan.FromSeconds(updateSecondsInterval).TotalMilliseconds);
         }
 
         public void Stop()
@@ -74,7 +74,7 @@ namespace PortsOwners
                         addr.LocalAddress += conn.LocalPort;
 
                     // Finally add to array:
-                    addrToSid.Add(addr.OwnerSID, addr);
+                    addrToSid.Add(addr.LocalAddress, addr);
                 }
             }
         }

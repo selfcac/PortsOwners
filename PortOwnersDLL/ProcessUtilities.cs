@@ -91,7 +91,7 @@ namespace PortsOwners
             Process process = Process.GetProcessById((int)PID);
             try
             {
-                sidFromProcess(process.Handle);
+                result = sidFromProcess(process.Handle);
             }
             catch (Exception) {}
             return result;
@@ -119,17 +119,16 @@ namespace PortsOwners
         public static string GetProcessPath(uint processId)
         {
             IntPtr hprocess = kernel32.OpenProcess(kernel32.ProcessAccessFlags.QueryLimitedInformation, false, processId);
-
+            string result = "";
             try
             {
-                GetProcessPath(hprocess);
+                result = GetProcessPath(hprocess);
             }
             finally
             {
                 kernel32.CloseHandle(hprocess);
             }
-
-            return "";
+            return result;
         }
 
         public static bool usingHandle(uint targetProcess, Action<IntPtr> handleAction)
