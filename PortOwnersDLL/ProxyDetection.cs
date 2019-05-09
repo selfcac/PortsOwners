@@ -18,17 +18,17 @@ namespace PortOwnersDLL
             switch (bytes[0])
             {
                 case 127:
-                case 10:
+                case 10: //10.0.0.0/8 IP addresses: 10.0.0.0 – 10.255.255.255
                     {
                         return true;
                     }
 
-                case 192:
+                case 192: // 192.168.0.0/16 IP addresses: 192.168.0.0 – 192.168.255.255
                     {
                         return bytes[1] == 168;
                     }
 
-                case 172:
+                case 172: // 172.16.0.0/12 IP addresses: 172.16.0.0 – 172.31.255.255
                     {
                         return (bytes[1] >= 16 && bytes[1] <= 31);
                     }

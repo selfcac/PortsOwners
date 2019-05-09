@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortsOwnersExample", "Ports
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortOwnersDLL", "PortOwnersDLL\PortOwnersDLL.csproj", "{29D5E27C-9F8C-438C-BE04-24BD6C200351}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortOwnersDLLTests1", "PortOwnersDLLTests1\PortOwnersDLLTests1.csproj", "{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{29D5E27C-9F8C-438C-BE04-24BD6C200351}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29D5E27C-9F8C-438C-BE04-24BD6C200351}.Release|x86.ActiveCfg = Release|x86
 		{29D5E27C-9F8C-438C-BE04-24BD6C200351}.Release|x86.Build.0 = Release|x86
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F421EF0-6F2C-4585-8ACE-0BAB8B01EA3A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
