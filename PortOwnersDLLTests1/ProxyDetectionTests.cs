@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PortOwnersDLL;
+using PortOwners;
 using System;
 using System.Collections.Generic;
 using System.Linq;

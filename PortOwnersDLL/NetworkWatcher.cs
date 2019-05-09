@@ -76,7 +76,9 @@ namespace PortsOwners
 
                     // Finally add to array:
                     //Console.WriteLine("{0}, SID: {1}", addr.LocalAddress, addr.OwnerSID);
-                    addrToSid.Add(addr.LocalAddress, addr);
+                    // Might exist because multithreadin
+                    if (!addrToSid.ContainsKey(addr.LocalAddress))
+                        addrToSid.Add(addr.LocalAddress, addr);
                 }
             }
         }
