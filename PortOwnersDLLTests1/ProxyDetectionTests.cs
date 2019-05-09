@@ -62,8 +62,16 @@ namespace PortOwnersDLL.Tests
         [TestMethod()]
         public void IsHttpsConnectTest()
         {
+            // HTTP-S Proxy
             Assert.AreEqual(true, ProxyDetection.IsHttpsConnect(Encoding.ASCII.GetBytes("CONNECT www.google.com:443 ")));
             Assert.AreEqual(false, ProxyDetection.IsHttpsConnect(Encoding.ASCII.GetBytes("GET / HTTP1.1 ")));
+
+            // HTTP proxy
+            Assert.AreEqual(true, ProxyDetection.IsHttpsConnect(Encoding.ASCII.GetBytes("GET http://www.google.com/go/home ")));
+            Assert.AreEqual(true, ProxyDetection.IsHttpsConnect(Encoding.ASCII.GetBytes("POST http://www.google.com/go/home ")));
+
+            // Blank
+            Assert.AreEqual(false, ProxyDetection.IsHttpsConnect(new byte[] { }));
 
             // junk bytes:
             Assert.AreEqual(false, ProxyDetection.IsHttpsConnect(new byte[] { 0,5,55,66}));

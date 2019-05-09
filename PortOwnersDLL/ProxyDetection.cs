@@ -183,22 +183,31 @@ namespace PortsOwners
         }
 
         static byte[] HTTPsConnect = Encoding.ASCII.GetBytes("CONNECT ");
+        static byte[] proxyGET = Encoding.ASCII.GetBytes("GET http://");
+        static byte[] proxyPOST = Encoding.ASCII.GetBytes("POST http://");
 
         public static bool IsHttpsConnect(byte[] payload)
         {
-            bool headerEqual = true;
+            return findInBytes(payload, HTTPsConnect) || findInBytes(payload, proxyGET) || findInBytes(payload, proxyPOST);
+        }
 
-            for (int i = 0; i < HTTPsConnect.Length; i++)
+        private static bool findInBytes(byte[] payload, byte[] find)
+        {
+            if (payload.Length < find.Length)
+                return false;
+
+            bool equal = true;
+
+            for (int i = 0; i < find.Length; i++)
             {
-                if (HTTPsConnect[i] != payload[i])
+                if (find[i] != payload[i])
                 {
-                    headerEqual = false;
+                    equal = false;
                     break;
                 }
             }
 
-            return headerEqual;
+            return equal;
         }
-
     }
 }
